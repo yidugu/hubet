@@ -1,0 +1,23 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/pdf",
+      "has": [{ "type": "query", "key": "id", "value": "(?<id>[A-Za-z0-9_-]+)" }],
+      "destination": "https://drive.usercontent.google.com/download?id=:id&export=download&confirm=t"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/pdf",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" },
+        { "key": "Access-Control-Allow-Headers", "value": "Range" },
+        { "key": "Access-Control-Expose-Headers", "value": "Content-Length, Content-Range, Accept-Ranges" }
+      ]
+    },
+    {
+      "source": "/sw.js",
+      "headers": [{ "key": "Cache-Control", "value": "no-cache" }]
+    }
+  ]
+}
